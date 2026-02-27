@@ -1,14 +1,16 @@
 spring:
   datasource:
-    username: ibolx
-    password: viboldev
-    url: jdbc:postgresql://localhost:5432/item_test
+    url: ${SPRING_DATASOURCE_URL:${JDBC_DATABASE_URL:jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:item_test}}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DATABASE_USER:ibolx}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DATABASE_PASSWORD:viboldev}}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         '[format_sql]': false
-     #   dialect: org.hiberznate.dialect.PostgreSQLDialect
+
+server:
+  port: ${PORT:8080}
