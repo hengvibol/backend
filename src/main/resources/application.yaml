@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d6gnh6fkijhs73f17h3g-a.oregon-postgres.render.com:5432/springboot_db_jckr
-    username: springboot_db_jckr_user
-    password: qk470rwkI2IaKv1hU9Ob54xupD2gJ2N6
+    url: ${SPRING_DATASOURCE_URL:${JDBC_DATABASE_URL:jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:item_test}}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DATABASE_USER:ibolx}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DATABASE_PASSWORD:viboldev}}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -12,5 +12,5 @@ spring:
       hibernate:
         '[format_sql]': false
 
-# server:
-#   port: ${PORT:8080}
+server:
+  port: ${PORT:8080}
